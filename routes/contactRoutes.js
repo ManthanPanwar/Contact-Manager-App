@@ -1,29 +1,35 @@
 const express = require("express");
 const router = express.Router();
+const {
+  getContacts,
+  createContact,
+  getContact,
+  updateContact,
+  deleteContact,
+} = require("../controllers/contactController");
 
-// get all contacts
-router.get("/", (req, res, next) => {
-  res.status(200).json({ message: "Get all contacts" });
-});
+// // get all contacts
+// router.get("/", getContacts);
 
-// create a contact
-router.post("/", (req, res, next) => {
-  res.status(200).json({ message: "Create contact" });
-});
+// // create a contact
+// router.post("/", createContact);
 
-// get individual contact
-router.get("/:id", (req, res, next) => {
-  res.status(200).json({ message: `Get contact for ${req.params.id}` });
-});
+// // get individual contact
+// router.get("/:id", getContact);
 
-// update a contact(overwrite)
-router.put("/:id", (req, res, next) => {
-  res.status(200).json({ message: `Update contact for ${req.params.id}` });
-});
+// // update a contact(overwrite)
+// router.put("/:id", updateContact);
 
-// delete a contact
-router.delete("/:id", (req, res, next) => {
-  res.status(200).json({ message: `Delete contact for ${req.params.id}` });
-});
+// // delete a contact
+// router.delete("/:id", deleteContact);
+
+//
+
+router.get("/", getContacts).post("/", createContact);
+
+router
+  .get("/:id", getContact)
+  .put("/:id", updateContact)
+  .delete("/:id", deleteContact);
 
 module.exports = router;

@@ -6,3 +6,30 @@
 [
   to test the APIs we need a HTTP client.(like thunderClient or Postman)
 ]
+
+after creating contactRoutes
+[
+  Now we are going to create the controllers, so that controllers is going to contain all our logic for the
+  request response and it is going to connect with our database.
+]
+
+after creating contactController
+[
+  the next thing we are going to do is accept the body from the request
+]
+
+[
+  whenever you need to accept some data from the client to our server, we need to use a body parser so that we can
+  parse the stream of data that we are recieving from the client.
+
+  for that we need to use a middleware, and express provide us a middleware for the json object which we can get from
+  the client.
+
+  express.json(); will provide the parser
+]
+
+[
+  the error comes in the form of HTML format, but we need in json format and to change this, we need to create
+  a custom middleware which is going to accept the request response and then in between its going to transform 
+  the response into a JSON. 
+]
