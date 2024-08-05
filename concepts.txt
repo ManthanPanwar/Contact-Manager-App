@@ -1,0 +1,8 @@
+.env
+[
+  environment variable file
+]
+
+[
+  to test the APIs we need a HTTP client.(like thunderClient or Postman)
+]
