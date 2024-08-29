@@ -25,6 +25,8 @@ const {
 
 //
 
+// Each of these methods (get, post, patch, put, delete) returns the router object itself,
+// allowing the next method to be called on the same object.
 router.get("/", getContacts).post("/", createContact);
 
 router

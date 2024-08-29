@@ -33,3 +33,29 @@ after creating contactController
   a custom middleware which is going to accept the request response and then in between its going to transform 
   the response into a JSON. 
 ]
+
+after errorHandler:
+[
+  Since, we are going to use Mongodb and the Mongoose, so whenever we interact with the Mongodb we always get a promise.
+
+  In order to resolve that promise, we are going to make use of async await
+]
+
+[
+  now since whenever we use the async and if we want to catch an error we need to make use of a try catch block and
+  in order to do the try catch block we have to add the try catch Block in each of the functions(contactController).
+
+  But there is an better way to do this and that's where we can make use of a middleware which is an express async handler,
+  which is going to handle our exceptions inside the async express routes and then it's going to pass them to the
+  express errorHandler which we have created here.
+
+  lets install the express async handler -> npm install --save express-async-handler
+
+  and import that in contactController.
+]
+
+[
+  in order to use the asyncHandler you have to wrap your whole async function inside asyncHandler.
+
+  Now, we don't have to write all the try catch blocks in order to catch the errors.
+]
