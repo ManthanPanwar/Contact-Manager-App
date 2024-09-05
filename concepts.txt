@@ -59,3 +59,66 @@ after errorHandler:
 
   Now, we don't have to write all the try catch blocks in order to catch the errors.
 ]
+
+[
+  now we need to setup Mongodb:
+  [
+    create account with email.
+
+    setup up the account.
+
+    choose AWS 
+
+    set cluster name and create cluster
+
+    set username:admin
+    set password:manthan
+
+    select connect from local environment
+    add your current IP
+
+    Collection is kind of database and inside collections you can store the records in the form of json object.
+
+    inside Collection, create database:
+    [
+      database -------> mycontacts-backend
+      collection --------> contacts
+    ]
+
+    now to connect you can use different methods:
+    [
+      use Mongodb Compass and VScode Mongodb extension
+
+      setup the connection string in VScode and Mongodb Compass
+
+      change <password> -------> manthan
+
+      now to connect with Mongodb Compass we need to setup connection string:
+      [
+        inside env file
+        CONNECTION_STRING = ...........mongodb.net/mycontacts-backend?retry.....................
+      ]
+    ]
+
+    now to connect with our mongodb database we will need a Mongoose Which is a object model design schema for
+    our entities like contacts or user and it help us to communicate with the Mongodb database.
+    [
+      dbConnection.js
+    ]
+
+    and setting up the dbConnection.js, you have to call the connectDb inside the server.js
+  ]
+]
+
+now next is to create schema for our contacts:
+[
+  create folder named ----> models.
+
+  now we need to create contactSchema, this will have all the values that we want in our contact resource.
+
+  then export the contactSchema
+
+  and we will use this in the contactController.
+]
+
+now contactSchema(Contact) gives us CRUD operations so that we can communicate with the database.
