@@ -122,3 +122,92 @@ now next is to create schema for our contacts:
 ]
 
 now contactSchema(Contact) gives us CRUD operations so that we can communicate with the database.
+
+now the next thing we need to do is to introduce the authentication:
+[
+  we are going to provide some endpoints which will help a user to register themself and login.
+  and once they login they can use a access token and with the help of the access token they can manage their contacts.
+]
+
+lets add another route:
+[
+  userRoutes ----> setup the express.Router()
+  and create register, login and current routes.
+]
+
+now we will create userController.js:
+[
+  and setup the route control.
+]
+
+now for registering user, we will create userModel.
+
+now we will setup userController:
+[
+  registerUser  ----> userAvailable or not 
+  [
+    for creating a new user we need to encrypt the password(hash) and we can do this by using bcrypt package.
+    [
+      bcrypt.hash(password, solved_rounds---> 10) and it provide us promise, so we need to use await before it.
+
+    ]
+    we will have unique users on the basis of email.
+  ]
+
+  now we will create an end point for login.
+]
+
+login endpoint:
+[
+  whenever a user is login we get an access token and for that we going to make use of json web token(JWT).
+
+  whenever the client sends login email and password, we need to match the password with the hashed password
+  using bcrypt.compare(password, hashedPassword) and when it matches, we provide user a access token.
+
+  if the password matches we need to add access token in the response:
+  [
+    inside token we have ----> payload, ACCESS_TOKEN_SECRET, expiration time of our token
+  ]
+
+  and by using the access token we can access all the private routes.
+]
+
+json web token consists of 3 parts:
+[
+  firstPart: Header algorithm of token
+
+  secondPart: payload(user information)
+
+  thirdPart: signature verification
+
+  [
+    and for this we need to install json web token ------>>>>>>> npm install jsonwebtoken
+  ]
+]
+
+to fetch the value from .env file:
+[
+  use process module:[
+    process.env.ACCESS_TOKEN_SECRET
+  ]
+]
+
+..........................
+we will need a middleware to validate the token which a client is sending in our request as a bearer token:
+[
+  validateTokenHandler.js is used for validating the token.
+  
+  and we will use jwt.verify(token, secret, callback function) to verify the token
+]
+
+whenever a user is sending a request the token is actually passed in the header section with the auth field.
+{
+  you can put it inside header or inside bearer any will work.
+}
+
+Now we have successfully verified the json web token.
+now what we need to do is whenever someone is requesting the current user information, we need to go to the database
+in the Mongodb and then we need to fetch the information and then provide it as a response. ---->>> res.json(req.user);
+
+now the next thing we need to do is we need to protect all our contacts routes, so only a logged in user will be able to 
+perform CRUD operations on the contacts that they have created for themselves.
