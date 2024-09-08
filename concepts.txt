@@ -211,3 +211,25 @@ in the Mongodb and then we need to fetch the information and then provide it as 
 
 now the next thing we need to do is we need to protect all our contacts routes, so only a logged in user will be able to 
 perform CRUD operations on the contacts that they have created for themselves.
+
+user that are registered:
+[
+  {
+  "email": "boss@king.com",
+  "password": "12345"
+  }
+
+  {
+  "email": "sanket@king.com",
+  "password": "123456789"
+  }
+]
+
+for protecting contacts, we need to associate the contact with user_id who is creating it.
+
+inside contactSchema -----> add user_id(type: mongoose.Schema.Types.ObjectId)
+now we will make all the contact routes private, in contactRoute we will use validateToken on all routes.
+
+now we will get the contacts as per user_id
+
+if user_id does not match , then you can not perform CRUD operations for other user.

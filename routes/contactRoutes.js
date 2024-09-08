@@ -7,6 +7,7 @@ const {
   updateContact,
   deleteContact,
 } = require("../controllers/contactController");
+const validateToken = require("../middleware/validateTokenHandler");
 
 // // get all contacts
 // router.get("/", getContacts);
@@ -27,6 +28,10 @@ const {
 
 // Each of these methods (get, post, patch, put, delete) returns the router object itself,
 // allowing the next method to be called on the same object.
+
+// if you have all the routes protected then you can directly use the router.use() middleware.
+router.use(validateToken);
+
 router.get("/", getContacts).post("/", createContact);
 
 router
